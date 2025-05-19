@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Scheda Allenamento – Massimali</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f5f5f5;
+    }
+    h2 { margin-top: 40px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+      background: #fff;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #e0e0e0;
+    }
+    input[type="number"] {
+      width: 80px;
+    }
+    button {
+      padding: 6px 12px;
+      cursor: pointer;
+    }
+    .best {
+      font-weight: bold;
+      color: #2a7ae2;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Scheda Allenamento – Monitoraggio Massimali</h1>
+  <p>Inserisci il peso usato oggi per ciascun esercizio. Verrà conservato solo il valore massimo registrato.</p>
+
+  <!-- Giorno 1 – Petto & Tricipiti -->
+  <h2>Giorno 1 – Petto & Tricipiti</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Esercizio</th>
+        <th>Massimale (kg)</th>
+        <th>Inserisci peso odierno (kg)</th>
+        <th>Aggiorna</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Ripeti questa riga per ogni esercizio, modificando data-id e descrizione -->
+      <tr>
+        <td>Panca piana con bilanciere</td>
+        <td class="best" id="best-panca-piana">0</td>
+        <td><input type="number" id="input-panca-piana" min="0"></td>
+        <td><button onclick="updateBest('panca-piana')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Panca inclinata con manubri</td>
+        <td class="best" id="best-panca-inclinata">0</td>
+        <td><input type="number" id="input-panca-inclinata" min="0"></td>
+        <td><button onclick="updateBest('panca-inclinata')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Croci ai cavi</td>
+        <td class="best" id="best-croci-cavi">0</td>
+        <td><input type="number" id="input-croci-cavi" min="0"></td>
+        <td><button onclick="updateBest('croci-cavi')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Dips (petto-focus)</td>
+        <td class="best" id="best-dips">0</td>
+        <td><input type="number" id="input-dips" min="0"></td>
+        <td><button onclick="updateBest('dips')">OK</button></td>
+      </tr>
+      <tr>
+        <td>French press con bilanciere EZ</td>
+        <td class="best" id="best-french-press">0</td>
+        <td><input type="number" id="input-french-press" min="0"></td>
+        <td><button onclick="updateBest('french-press')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Push-down ai cavi (barra o rope)</td>
+        <td class="best" id="best-push-down">0</td>
+        <td><input type="number" id="input-push-down" min="0"></td>
+        <td><button onclick="updateBest('push-down')">OK</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Giorno 2 – Gambe & Addominali -->
+  <h2>Giorno 2 – Gambe & Addominali</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Esercizio</th>
+        <th>Massimale (kg)</th>
+        <th>Inserisci peso odierno (kg)</th>
+        <th>Aggiorna</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Squat con bilanciere</td>
+        <td class="best" id="best-squat">0</td>
+        <td><input type="number" id="input-squat" min="0"></td>
+        <td><button onclick="updateBest('squat')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Leg press</td>
+        <td class="best" id="best-leg-press">0</td>
+        <td><input type="number" id="input-leg-press" min="0"></td>
+        <td><button onclick="updateBest('leg-press')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Affondi camminati (manubri)</td>
+        <td class="best" id="best-affondi">0</td>
+        <td><input type="number" id="input-affondi" min="0"></td>
+        <td><button onclick="updateBest('affondi')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Leg curl sdraiato</td>
+        <td class="best" id="best-leg-curl">0</td>
+        <td><input type="number" id="input-leg-curl" min="0"></td>
+        <td><button onclick="updateBest('leg-curl')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Calf raise in piedi</td>
+        <td class="best" id="best-calf-raise">0</td>
+        <td><input type="number" id="input-calf-raise" min="0"></td>
+        <td><button onclick="updateBest('calf-raise')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Plank frontale</td>
+        <td class="best" id="best-plank">0</td>
+        <td><input type="number" id="input-plank" min="0"></td>
+        <td><button onclick="updateBest('plank')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Crunch su fitball</td>
+        <td class="best" id="best-crunch">0</td>
+        <td><input type="number" id="input-crunch" min="0"></td>
+        <td><button onclick="updateBest('crunch')">OK</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Giorno 3 – Schiena & Bicipiti -->
+  <h2>Giorno 3 – Schiena & Bicipiti</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Esercizio</th>
+        <th>Massimale (kg)</th>
+        <th>Inserisci peso odierno (kg)</th>
+        <th>Aggiorna</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Stacco da terra</td>
+        <td class="best" id="best-stacco">0</td>
+        <td><input type="number" id="input-stacco" min="0"></td>
+        <td><button onclick="updateBest('stacco')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Trazioni alla sbarra (presa larga)</td>
+        <td class="best" id="best-trazioni">0</td>
+        <td><input type="number" id="input-trazioni" min="0"></td>
+        <td><button onclick="updateBest('trazioni')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Rematore con bilanciere</td>
+        <td class="best" id="best-rematore">0</td>
+        <td><input type="number" id="input-rematore" min="0"></td>
+        <td><button onclick="updateBest('rematore')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Lat machine presa inversa</td>
+        <td class="best" id="best-lat-machine">0</td>
+        <td><input type="number" id="input-lat-machine" min="0"></td>
+        <td><button onclick="updateBest('lat-machine')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Curl con bilanciere</td>
+        <td class="best" id="best-curl">0</td>
+        <td><input type="number" id="input-curl" min="0"></td>
+        <td><button onclick="updateBest('curl')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Hammer curl con manubri</td>
+        <td class="best" id="best-hammer-curl">0</td>
+        <td><input type="number" id="input-hammer-curl" min="0"></td>
+        <td><button onclick="updateBest('hammer-curl')">OK</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Giorno 4 – Spalle & Braccia (Mix) -->
+  <h2>Giorno 4 – Spalle & Braccia (Mix)</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Esercizio</th>
+        <th>Massimale (kg)</th>
+        <th>Inserisci peso odierno (kg)</th>
+        <th>Aggiorna</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Military press con bilanciere</td>
+        <td class="best" id="best-military-press">0</td>
+        <td><input type="number" id="input-military-press" min="0"></td>
+        <td><button onclick="updateBest('military-press')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Alzate laterali con manubri</td>
+        <td class="best" id="best-alzate-laterali">0</td>
+        <td><input type="number" id="input-alzate-laterali" min="0"></td>
+        <td><button onclick="updateBest('alzate-laterali')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Face pull ai cavi</td>
+        <td class="best" id="best-face-pull">0</td>
+        <td><input type="number" id="input-face-pull" min="0"></td>
+        <td><button onclick="updateBest('face-pull')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Curl concentrato</td>
+        <td class="best" id="best-curl-concentrato">0</td>
+        <td><input type="number" id="input-curl-concentrato" min="0"></td>
+        <td><button onclick="updateBest('curl-concentrato')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Estensioni tricipiti sopra la testa</td>
+        <td class="best" id="best-estensioni-tricipiti">0</td>
+        <td><input type="number" id="input-estensioni-tricipiti" min="0"></td>
+        <td><button onclick="updateBest('estensioni-tricipiti')">OK</button></td>
+      </tr>
+      <tr>
+        <td>Wrist curl / Reverse wrist curl</td>
+        <td class="best" id="best-wrist-curl">0</td>
+        <td><input type="number" id="input-wrist-curl" min="0"></td>
+        <td><button onclick="updateBest('wrist-curl')">OK</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    // Lista di tutti gli ID esercizio
+    const exercises = [
+      'panca-piana', 'panca-inclinata', 'croci-cavi', 'dips', 'french-press', 'push-down',
+      'squat', 'leg-press', 'affondi', 'leg-curl', 'calf-raise', 'plank', 'crunch',
+      'stacco', 'trazioni', 'rematore', 'lat-machine', 'curl', 'hammer-curl',
+      'military-press', 'alzate-laterali', 'face-pull', 'curl-concentrato', 'estensioni-tricipiti', 'wrist-curl'
+    ];
+
+    // All'avvio, carica e mostra i massimali salvati
+    window.onload = () => {
+      exercises.forEach(id => {
+        const best = localStorage.getItem('best-' + id) || 0;
+        document.getElementById('best-' + id).innerText = best;
+      });
+    };
+
+    // Funzione per aggiornare il massimale di un esercizio
+    function updateBest(id) {
+      const inputEl = document.getElementById('input-' + id);
+      const newVal = parseFloat(inputEl.value);
+      if (isNaN(newVal) || newVal <= 0) {
+        alert('Inserisci un valore numerico valido maggiore di zero.');
+        return;
+      }
+
+      const key = 'best-' + id;
+      const currentBest = parseFloat(localStorage.getItem(key)) || 0;
+
+      if (newVal > currentBest) {
+        localStorage.setItem(key, newVal);
+        document.getElementById('best-' + id).innerText = newVal;
+      }
+      inputEl.value = '';
+    }
+  </script>
+
+</body>
+</html>
